@@ -10,11 +10,11 @@ export default function TextInput({
 }: ITextInput) {
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target;
-    const value = input.value;
+    const inputValue = input.value;
     const valueChecker = new RegExp("^.*[^A-zА-яЁё].*$");
-    !valueChecker.test(value)
-      ? setValue(input.value.trim())
-      : console.log("Bad input");
+    !valueChecker.test(inputValue)
+      ? setValue(inputValue.trim())
+      : console.log(value);
   };
   return (
     <div className="flex flex-col gap-3">
