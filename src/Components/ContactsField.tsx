@@ -4,7 +4,7 @@ import Button from "./Button";
 import ModalDelete from "./ModalDelete";
 import ModalEdit from "./ModalEdit";
 
-export default function ContactsField({ contacts, server, setContacts }: IContactField) {
+export default function ContactsField({ contacts, server, setContacts, }: IContactField) {
 
   const [isModalDelete, setIsModalDelete] = useState(false)
   const [isModalEdit, setIsModalEdit] = useState(false)

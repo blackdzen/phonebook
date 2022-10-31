@@ -1,8 +1,8 @@
-import React from "react";
+import React, { SetStateAction } from "react";
 export default interface ITextInput {
   id: string;
   labelText: string;
   placeholderText: string;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setValue: React.Dispatch<SetStateAction<string>>
+  value: string
 }

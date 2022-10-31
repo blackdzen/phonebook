@@ -21,21 +21,6 @@ export default function ModalEdit({ itemList, setModalEdit, server, setContacts 
     itemID ? setContactID(itemID) : setContactID("")
   }, [])
 
-  const textInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputField = event.target;
-    switch (inputField.id) {
-      case "Edit first name":
-        setFirstName(inputField.value.trim());
-        break;
-      case "Edit last name":
-        setLastName(inputField.value.trim());
-        break;
-      case "Edit phone number":
-        setPhoneNumber(inputField.value.trim());
-        break;
-    }
-  };
-
   const clickEditYes = () => {
     const editedContact: IContact = {
       firstName: firstName,
@@ -49,7 +34,6 @@ export default function ModalEdit({ itemList, setModalEdit, server, setContacts 
           setContacts(contacts);
         });
       })
-
     setModalEdit(false)
   }
 
@@ -69,21 +53,21 @@ export default function ModalEdit({ itemList, setModalEdit, server, setContacts 
               labelText="First name:"
               placeholderText=""
               value={firstName}
-              onChange={textInputHandler}
+              setValue={setFirstName}
             />
             <TextInput
               id="Edit last name"
               labelText="Second name:"
               placeholderText=""
               value={lastName}
-              onChange={textInputHandler}
+              setValue={setLastName}
             />
             <TextInput
               id="Edit phone number"
               labelText="Phone number:"
               placeholderText=""
               value={phoneNumber}
-              onChange={textInputHandler}
+              setValue={setPhoneNumber}
             />
 
           </div>

@@ -21,21 +21,6 @@ function App() {
   const [contacts, setContacts] = useState<IContact[] | undefined>();
   const [contactErrVisible, setContactErrVisible] = useState(false);
 
-  const textInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputField = event.target;
-    switch (inputField.id) {
-      case "first name":
-        setFirstName(inputField.value.trim());
-        break;
-      case "last name":
-        setLastName(inputField.value.trim());
-        break;
-      case "phone number":
-        setPhoneNumber(inputField.value.trim());
-        break;
-    }
-  };
-
   const buttonAddHandler = () => {
     if (firstName && lastName && phoneNumber) {
       server.addContact({ firstName, lastName, phoneNumber }).then(() => {
@@ -60,22 +45,22 @@ function App() {
           id="first name"
           labelText={"First name:"}
           placeholderText={"enter a first name..."}
+          setValue={setFirstName}
           value={firstName}
-          onChange={textInputHandler}
         />
         <TextInput
           id="last name"
           labelText={"Last name:"}
           placeholderText={"enter a last name..."}
+          setValue={setLastName}
           value={lastName}
-          onChange={textInputHandler}
         />
         <TextInput
           id="phone number"
           labelText={"Phone:"}
           placeholderText={"enter a phone number..."}
+          setValue={setPhoneNumber}
           value={phoneNumber}
-          onChange={textInputHandler}
         />
         <div className="flex justify-around gap-1">
           <Button name="Add" label="Add" onClick={buttonAddHandler} />

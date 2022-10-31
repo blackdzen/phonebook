@@ -3,7 +3,7 @@ import Server from "../Modules/Server";
 import IContact from "./IContact";
 
 export default interface IContactField {
-  contacts: IContact[] | undefined,
+  contacts: IContact[] | undefined
   setContacts: React.Dispatch<SetStateAction<IContact[] | undefined>>
-  server: Server;
+  server: Server
 }

@@ -5,9 +5,14 @@ export default function TextInput({
   id,
   labelText,
   placeholderText,
-  value,
-  onChange,
+  setValue,
+  value
 }: ITextInput) {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const input = event.target
+    setValue(input.value)
+    console.log(input.value)
+  }
   return (
     <div className="flex flex-col gap-3">
       <h4 className="font-medium text-white text-2xl">{labelText}</h4>
