@@ -6,13 +6,16 @@ export default function TextInput({
   labelText,
   placeholderText,
   setValue,
-  value
+  value,
 }: ITextInput) {
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const input = event.target
-    setValue(input.value)
-    console.log(input.value)
-  }
+    const input = event.target;
+    const value = input.value;
+    const valueChecker = new RegExp("^.*[^A-zА-яЁё].*$");
+    !valueChecker.test(value)
+      ? setValue(input.value.trim())
+      : console.log("Bad input");
+  };
   return (
     <div className="flex flex-col gap-3">
       <h4 className="font-medium text-white text-2xl">{labelText}</h4>
