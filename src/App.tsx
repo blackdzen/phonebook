@@ -65,7 +65,7 @@ function App() {
         <TelInput
           id="phone number"
           labelText={"Phone:"}
-          placeholderText={"enter a phone number..."}
+          placeholderText={"+7 (xxx) - xx - xx"}
           setValue={setPhoneNumber}
           value={phoneNumber}
         />

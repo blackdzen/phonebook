@@ -1,5 +1,6 @@
 import React from "react";
 import ITelInput from "../Intetfaces/ITelInput"
+import PhoneMask from "../Modules/PhoneMask";
 
 export default function TelInput({
   id,
@@ -8,11 +9,14 @@ export default function TelInput({
   setValue,
   value,
 }: ITelInput) {
+  const phoneMask = new PhoneMask('+7')
+
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const input = event.target;
-    const inputValue = input.value
-    setValue(inputValue)
+    const inputValue = event.target.value;
+    let phoneNumber = phoneMask.getPhone(inputValue)
+    setValue(phoneNumber)
   };
+
   return (
     <div className="flex flex-col gap-3">
       <h4 className="font-medium text-white text-2xl">{labelText}</h4>
