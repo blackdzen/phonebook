@@ -17,6 +17,11 @@ export default function TelInput({
     setValue(phoneNumber)
   };
 
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log(event.key)
+    console.log(value)
+  }
+
   return (
     <div className="flex flex-col gap-3">
       <h4 className="font-medium text-white text-2xl">{labelText}</h4>
@@ -27,6 +32,7 @@ export default function TelInput({
         placeholder={placeholderText}
         value={value}
         onChange={onChange}
+        onKeyDown={onKeyDown}
       />
     </div>
   );
