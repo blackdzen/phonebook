@@ -14,6 +14,7 @@ export default class PhoneMask {
   secondPart: string
   thirdPart: string
 
+
   constructor(code: string) {
     this.isCountryCode = false
     this.countryCode = code
@@ -26,6 +27,9 @@ export default class PhoneMask {
   checkInput(input: string): string {
     if (input === '+') return '+'
     let formattedInput = ''
+    if (input.startsWith(this.countryCode) && input.length === 10 + this.countryCode.length) {
+      input = input.slice(this.countryCode.length)
+    }
     if (input.startsWith(this.countryCode)) {
       input = input.slice(this.countryCode.length + 1)
     }
@@ -33,6 +37,7 @@ export default class PhoneMask {
       input = input.slice(0, 3)
     }
     formattedInput = input.replace(/\D/g, '')
+    if (formattedInput.length === 11 && (formattedInput.startsWith('8') || formattedInput.startsWith('7'))) formattedInput = formattedInput.substring(1)
     return formattedInput
   }
 
@@ -77,7 +82,7 @@ export default class PhoneMask {
     return (`${this.countryCode} ${phoneNumber}`)
   }
 
-  getPhone(input: string): string {
+  getPhone(input: string, cursorPosition: number | null): string {
     let phoneNumber = this.checkInput(input)
     this.slicePhoneNumber(phoneNumber)
     phoneNumber = this.constructPhoneNumber(phoneNumber)
@@ -86,5 +91,28 @@ export default class PhoneMask {
     } else {
       return ''
     }
+  }
+
+  deletePhone(cursorPosition: number | null, key: string, inputValue: string): string {
+    let phoneNumber = inputValue
+    if (!cursorPosition) cursorPosition = 0
+
+    let isCodePart: boolean | null = null
+    cursorPosition <= this.countryCode.length ? isCodePart = true : isCodePart = false
+
+    const indelibleCharacters = ['(', ')', ' ']
+
+    const rightFromCursor = cursorPosition
+    const leftFromCursor = cursorPosition - 1
+
+    if (!isCodePart) {
+      if (key === 'Backspace' && indelibleCharacters.indexOf(inputValue[leftFromCursor]) < 0) {
+        phoneNumber = inputValue.substring(0, leftFromCursor) + inputValue.substring(rightFromCursor)
+      }
+      if (key === 'Delete' && indelibleCharacters.indexOf(inputValue[rightFromCursor]) < 0) {
+        phoneNumber = inputValue.substring(0, rightFromCursor) + inputValue.substring(rightFromCursor + 1)
+      }
+    }
+    return phoneNumber
   }
 }
