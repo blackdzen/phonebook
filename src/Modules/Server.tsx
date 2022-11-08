@@ -12,7 +12,13 @@ export default class Server {
   async getContacts() {
     return await axios
       .get(`${this.serverURL}`)
-      .then((response) => response.data);
+      .then((response) => {
+        let contacts = response.data as Array<IContact>
+        const sortedContacts = contacts.sort((contactA, contactB) => {
+          return contactA.firstName.toLowerCase() > contactB.firstName.toLowerCase() ? 1 : contactA.firstName.toLowerCase() < contactB.firstName.toLowerCase() ? -1 : 0
+        })
+        return sortedContacts
+      })
   }
 
   addContact(contact: IContact) {
