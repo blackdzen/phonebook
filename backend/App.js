@@ -21,16 +21,16 @@ app.get("/contacts", (request, response) => {
 app.post("/contacts", (request, response) => {
   let contact = new Contact(request.body);
   contact.save().then(() => {
-    response.status(200)
-    return response.json({ answer: 'contact added' });
+    response.status(200);
+    return response.json({ answer: "contact added" });
   });
 });
 
 app.delete("/contacts/:id", (request, response) => {
   Contact.findByIdAndRemove(request.params.id)
     .then(() => {
-      response.status(204)
-      return response.json({ answer: 'contact deleted' });
+      response.status(204);
+      return response.json({ answer: "contact deleted" });
     })
     .catch((error) => {
       console.log("Some error:" + error);
@@ -47,8 +47,8 @@ app.put("/contacts/:id", (request, response) => {
   };
   Contact.findByIdAndUpdate(request.params.id, editedContact, { new: true })
     .then((updatedNote) => {
-      response.status(200)
-      response.json({ answer: 'contact have been changed' });
+      response.status(200);
+      response.json({ answer: "contact have been changed" });
     })
     .catch((error) => console.log(error));
 });

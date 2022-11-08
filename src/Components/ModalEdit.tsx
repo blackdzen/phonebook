@@ -4,42 +4,46 @@ import IModalEdit from "../Intetfaces/IModalEdit";
 import Button from "./Button";
 import TextInput from "./TextInput";
 
-export default function ModalEdit({ itemList, setModalEdit, server, setContacts }: IModalEdit) {
+export default function ModalEdit({
+  itemList,
+  setModalEdit,
+  server,
+  setContacts,
+}: IModalEdit) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [contactID, setContactID] = useState("")
+  const [contactID, setContactID] = useState("");
 
   useEffect(() => {
-    let itemFirstName = itemList?.querySelector('.first-name')?.textContent
-    itemFirstName ? setFirstName(itemFirstName) : setFirstName("")
-    let itemLastName = itemList?.querySelector('.last-name')?.textContent
-    itemLastName ? setLastName(itemLastName) : setLastName("")
-    let itemPhoneNumber = itemList?.querySelector('.phone-number')?.textContent
-    itemPhoneNumber ? setPhoneNumber(itemPhoneNumber) : setPhoneNumber("")
-    let itemID = itemList?.id
-    itemID ? setContactID(itemID) : setContactID("")
-  }, [])
+    let itemFirstName = itemList?.querySelector(".first-name")?.textContent;
+    itemFirstName ? setFirstName(itemFirstName) : setFirstName("");
+    let itemLastName = itemList?.querySelector(".last-name")?.textContent;
+    itemLastName ? setLastName(itemLastName) : setLastName("");
+    let itemPhoneNumber = itemList?.querySelector(".phone-number")?.textContent;
+    itemPhoneNumber ? setPhoneNumber(itemPhoneNumber) : setPhoneNumber("");
+    let itemID = itemList?.id;
+    itemID ? setContactID(itemID) : setContactID("");
+  }, []);
 
   const clickEditYes = () => {
     const editedContact: IContact = {
       firstName: firstName,
       lastName: lastName,
       phoneNumber: phoneNumber,
-      id: contactID
-    }
-    server.editContact(contactID, editedContact)
-      .then(() => {
-        server.getContacts().then((contacts) => {
-          setContacts(contacts);
-        });
-      })
-    setModalEdit(false)
-  }
+      id: contactID,
+    };
+    server.editContact(contactID, editedContact).then(() => {
+      server.getContacts().then((contacts) => {
+        setContacts(contacts);
+      });
+    });
+    setModalEdit(false);
+  };
 
   const clickEditNo = () => {
-    setModalEdit(false)
-  }
+    setModalEdit(false);
+  };
 
   return (
     <div>
@@ -69,7 +73,6 @@ export default function ModalEdit({ itemList, setModalEdit, server, setContacts 
               value={phoneNumber}
               setValue={setPhoneNumber}
             />
-
           </div>
           <div className="flex gap-4 justify-center">
             <Button name="Yes" label="Yes" onClick={clickEditYes} />
@@ -78,5 +81,5 @@ export default function ModalEdit({ itemList, setModalEdit, server, setContacts 
         </div>
       </div>
     </div>
-  )
+  );
 }

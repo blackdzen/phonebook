@@ -24,6 +24,6 @@ export default class Server {
   }
 
   editContact(id: string | undefined, contact: IContact) {
-    return axios.put(`${this.serverURL}/${id}`, contact)
+    return axios.put(`${this.serverURL}/${id}`, contact);
   }
 }

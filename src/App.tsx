@@ -39,10 +39,10 @@ function App() {
   };
 
   const buttonClearHandler = () => {
-    setFirstName("")
-    setLastName("")
-    setPhoneNumber("")
-  }
+    setFirstName("");
+    setLastName("");
+    setPhoneNumber("");
+  };
 
   return (
     <div className="container max-w-full h-screen flex ">
@@ -65,7 +65,7 @@ function App() {
         <TelInput
           id="phone number"
           labelText={"Phone:"}
-          placeholderText={"+7 (xxx) xxx xx  xx"}
+          placeholderText={"+7 (xxx) xxx xx xx"}
           setValue={setPhoneNumber}
           value={phoneNumber}
         />
@@ -73,12 +73,18 @@ function App() {
           <Button name="Add" label="Add" onClick={buttonAddHandler} />
           <Button name="Clear" label="Clear" onClick={buttonClearHandler} />
         </div>
-        {contactErrVisible && < AddContactError errMsg="Fields first, last name and phone cannot be empty" />}
+        {contactErrVisible && (
+          <AddContactError errMsg="Fields first, last name and phone cannot be empty" />
+        )}
       </div>
       <div className="max-w-3xl mx-auto">
-        <ContactsField contacts={contacts} setContacts={setContacts} server={server} />
+        <ContactsField
+          contacts={contacts}
+          setContacts={setContacts}
+          server={server}
+        />
       </div>
-    </div >
+    </div>
   );
 }
 

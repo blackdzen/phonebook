@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ITelInput from "../Intetfaces/ITelInput"
+import ITelInput from "../Intetfaces/ITelInput";
 import PhoneMask from "../Modules/PhoneMask";
 
 export default function TelInput({
@@ -9,49 +9,61 @@ export default function TelInput({
   setValue,
   value,
 }: ITelInput) {
-  const phoneMask = new PhoneMask('+7')
-  const [cursorPosition, setCursorPosition] = useState(0)
+  const phoneMask = new PhoneMask("+7");
+  const [cursorPosition, setCursorPosition] = useState(0);
 
   useEffect(() => {
-    const input = document.getElementById('phone number') as HTMLInputElement
-    input.selectionStart = input.selectionEnd = cursorPosition
-  }, [value])
+    const input = document.getElementById("phone number") as HTMLInputElement;
+    input.selectionStart = input.selectionEnd = cursorPosition;
+  }, [value]);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault()
-    const input = event.target as HTMLInputElement
-    const cursorPosition = input.selectionStart
+    event.preventDefault();
+    const input = event.target as HTMLInputElement;
+    const cursorPosition = input.selectionStart;
     const inputValue = input.value;
-    const phoneNumber = phoneMask.getPhone(inputValue, cursorPosition)
-    console.log(phoneNumber.endsWith(') '))
+    const phoneNumber = phoneMask.getPhone(inputValue, cursorPosition);
+    console.log(phoneNumber.endsWith(") "));
     if (cursorPosition === inputValue.length) {
-      setCursorPosition(phoneNumber.length)
+      setCursorPosition(phoneNumber.length);
     } else {
-      if (cursorPosition && phoneNumber.endsWith(') ') && phoneNumber[cursorPosition] === ')') {
-        setCursorPosition(phoneNumber.length)
+      if (
+        cursorPosition &&
+        phoneNumber.endsWith(") ") &&
+        phoneNumber[cursorPosition] === ")"
+      ) {
+        setCursorPosition(phoneNumber.length);
       } else {
-        if (cursorPosition) setCursorPosition(cursorPosition)
+        if (cursorPosition) setCursorPosition(cursorPosition);
       }
     }
-    setValue(phoneNumber)
+    setValue(phoneNumber);
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const key = event.key
-    const input = event.target as HTMLInputElement
-    if (key === 'Backspace' || key === 'Delete') {
+    const key = event.key;
+    const input = event.target as HTMLInputElement;
+    if (key === "Backspace" || key === "Delete") {
       if (input.selectionStart != input.value.length) {
-        event.preventDefault()
-        const phoneNumber = phoneMask.deletePhone(input.selectionStart, key, input.value)
-        setValue(phoneNumber)
-        if (key === 'Backspace') {
-          input.selectionStart ? setCursorPosition(input.selectionStart - 1) : setCursorPosition(0)
+        event.preventDefault();
+        const phoneNumber = phoneMask.deletePhone(
+          input.selectionStart,
+          key,
+          input.value
+        );
+        setValue(phoneNumber);
+        if (key === "Backspace") {
+          input.selectionStart
+            ? setCursorPosition(input.selectionStart - 1)
+            : setCursorPosition(0);
         } else {
-          input.selectionStart ? setCursorPosition(input.selectionStart) : setCursorPosition(0)
+          input.selectionStart
+            ? setCursorPosition(input.selectionStart)
+            : setCursorPosition(0);
         }
       }
     }
-  }
+  };
 
   return (
     <div className="flex flex-col gap-3">
