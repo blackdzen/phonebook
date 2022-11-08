@@ -23,7 +23,7 @@ function App() {
   const [contactErrVisible, setContactErrVisible] = useState(false);
 
   const buttonAddHandler = () => {
-    if (firstName && lastName && phoneNumber) {
+    if (firstName && lastName && phoneNumber && phoneNumber.length === 18) {
       server.addContact({ firstName, lastName, phoneNumber }).then(() => {
         server.getContacts().then((contacts) => {
           setContacts(contacts);
