@@ -11,10 +11,11 @@ export default function TelInput({
 }: ITelInput) {
   const phoneMask = new PhoneMask("+7");
   const [cursorPosition, setCursorPosition] = useState(0);
+  const [currentTelInput, setCurrentTelInput] = useState<HTMLInputElement>()
 
   useEffect(() => {
-    const input = document.getElementById("phone number") as HTMLInputElement;
-    input.selectionStart = input.selectionEnd = cursorPosition;
+    if (currentTelInput) currentTelInput.selectionStart = currentTelInput.selectionEnd = cursorPosition
+
   }, [value]);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +24,6 @@ export default function TelInput({
     const cursorPosition = input.selectionStart;
     const inputValue = input.value;
     const phoneNumber = phoneMask.getPhone(inputValue, cursorPosition);
-    console.log(phoneNumber.endsWith(") "));
     if (cursorPosition === inputValue.length) {
       setCursorPosition(phoneNumber.length);
     } else {
@@ -43,6 +43,7 @@ export default function TelInput({
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const key = event.key;
     const input = event.target as HTMLInputElement;
+    setCurrentTelInput(input)
     if (key === "Backspace" || key === "Delete") {
       if (input.selectionStart != input.value.length) {
         event.preventDefault();

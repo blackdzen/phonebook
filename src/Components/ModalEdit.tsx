@@ -3,6 +3,7 @@ import IContact from "../Intetfaces/IContact";
 import IModalEdit from "../Intetfaces/IModalEdit";
 import Button from "./Button";
 import TextInput from "./TextInput";
+import TelInput from "./TelInput";
 
 export default function ModalEdit({
   itemList,
@@ -66,12 +67,12 @@ export default function ModalEdit({
               value={lastName}
               setValue={setLastName}
             />
-            <TextInput
-              id="Edit phone number"
-              labelText="Phone number:"
-              placeholderText=""
-              value={phoneNumber}
+            <TelInput
+              id="phone number2"
+              labelText={"Phone:"}
+              placeholderText={"+7 (xxx) xxx xx xx"}
               setValue={setPhoneNumber}
+              value={phoneNumber}
             />
           </div>
           <div className="flex gap-4 justify-center">
