@@ -6,6 +6,7 @@ import ContactsField from "./Components/ContactsField";
 import AddContactError from "./Components/AddContactError";
 import IContact from "./Intetfaces/IContact";
 import TelInput from "./Components/TelInput";
+import Search from "./Components/Search";
 
 function App() {
   const server = new Server("http://localhost:3005/contacts");
@@ -84,6 +85,7 @@ function App() {
           server={server}
         />
       </div>
+      <Search />
     </div>
   );
 }
