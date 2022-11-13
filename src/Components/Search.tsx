@@ -145,11 +145,11 @@ export default function Search({ server }: ISearch) {
                   filteredContacts.map((contact) => (
                     <tr
                       key={contact.id}
-                      className="text-2xl text-center cursor-pointer hover:border-ventian-red transition-all"
+                      className="text-2xl text-center cursor-pointer  transition-all"
                     >
-                      <td className="border border-lavender-blush">{contact.firstName}</td>
-                      <td className="border border-lavender-blush">{contact.lastName}</td>
-                      <td className="border border-lavender-blush">{contact.phoneNumber}</td>
+                      <td className="border border-lavender-blush hover:border-ventian-red">{contact.firstName}</td>
+                      <td className="border border-lavender-blush hover:border-ventian-red">{contact.lastName}</td>
+                      <td className="border border-lavender-blush hover:border-ventian-red">{contact.phoneNumber}</td>
                     </tr>
                   ))) : (
                   <div>I'm you father Luke....</div>
