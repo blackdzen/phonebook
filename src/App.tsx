@@ -85,7 +85,7 @@ function App() {
           server={server}
         />
       </div>
-      <Search />
+      <Search server={server} />
     </div>
   );
 }
