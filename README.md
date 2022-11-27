@@ -11,7 +11,7 @@ It is an application designed as a pet project and which provides common service
 * [Node.js](https://nodejs.org/en/)
 * [npm](https://www.npmjs.com/)
 * [Git](https://git-scm.com/)
-* [MongoBD](https://www.mongodb.com/)
+* [MongoDB](https://www.mongodb.com/)
 
 ## Installation
 
@@ -29,7 +29,16 @@ Go to the phonebook directory and run npm modules installation by:
 Create a file .env in the root of the project, phonebook directory by default. For example on Linux:
 <br/>
 `touch .env`
-<br/>
+### Step 4
 Adjust your .env file by adding next variables:
 <br/>
-* MONGODB_URL = there must be a path to your MongoDB
+* MONGODB_URL = <there must be a path to your MongoDB>
+* SERVER_PORT = <choose port num>
+
+For example:
+MONGODB_URL = "mongodb://localhost:27017/example"
+SERVER_PORT = 3005
+
+### Step 5
+Finally run backend side: `npm run server` 
+And run frontend part: `npm run start`
