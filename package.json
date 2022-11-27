@@ -24,8 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "dev": "nodemon ./backend/App.js",
-    "test": "react-scripts test",
+    "server": "node ./backend/App.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
