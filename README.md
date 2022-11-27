@@ -32,9 +32,9 @@ Create a file .env in the root of the project, phonebook directory by default. F
 ### Step 4
 Adjust your .env file by adding next variables:
 <br/>
-* MONGODB_URL = <there must be a path to your MongoDB>
-* SERVER_PORT = <choose port num>
-
+* MONGODB_URL = 'there must be a path to your MongoDB'
+* SERVER_PORT = 'choose port num'
+<br/>
 For example:
 MONGODB_URL = "mongodb://localhost:27017/example"
 SERVER_PORT = 3005
