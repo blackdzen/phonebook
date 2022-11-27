@@ -37,8 +37,14 @@ Adjust your .env file by adding next variables:
 <br/>
 For example:
 MONGODB_URL = "mongodb://localhost:27017/example"
+<br/>
 SERVER_PORT = 3005
 
 ### Step 5
-Finally run backend side: `npm run server` 
-And run frontend part: `npm run start`
+Finally run backend side: 
+<br/>
+`npm run server` 
+<br/>
+And run frontend part:
+<br/>
+`npm run start`
