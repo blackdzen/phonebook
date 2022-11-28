@@ -4,7 +4,7 @@
 
 ## Description
 
-It is an application designed as a pet project and which provides common services such as add, edit, delete, find and storage contacts.
+This application designed as a pet project and provides common services such as adding, editing, deleting, searching and keeping the contacts.
 
 ## Requirements
 
