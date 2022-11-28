@@ -152,7 +152,7 @@ export default function Search({ server }: ISearch) {
                       <td className="border border-lavender-blush hover:border-ventian-red">{contact.phoneNumber}</td>
                     </tr>
                   ))) : (
-                  <div>I'm you father Luke....</div>
+                  <div>No contacts...</div>
                 )}
               </tbody>
             </table>
