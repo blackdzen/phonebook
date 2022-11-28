@@ -1,5 +1,5 @@
 # Phonebook App
-
+![Project main page image](https://github.com/blackdzen/pictures/raw/main/phonebook/phonebook.png)
 
 
 ## Description
